@@ -4,13 +4,12 @@ Beken BK3266 Boot ROM dumper
 ## Usage
 `bk3266_dump_brom.py <serial port> <file>`  
 
-Needs pySerial installed. Needs USB TTL adapter with 3.3v support.
+Needs pySerial installed. Needs USB-TTL adapter with 3.3v support.
 
-Connect UART to target device, run the python script and power the target on,  
-and in the easiest case it should start dumping right away. 
-UART is usually wired to micro USB data lines on SOP16 variant.
-If it is not, there are possibly some test points on the board where you can
-solder the wiring.
+Connect UART to target device, run the python script and power the target on,
+and in the easiest case it should start dumping right away. UART is usually 
+wired to micro USB data lines. If it is not, there are possibly some test 
+points on the board where you can solder the wiring.
 
 This particular fork was created because original one didn't work for me on a
 BK3266 based board. At first it did not dump anything, so i've fiddled with
@@ -31,8 +30,4 @@ Good thing is that MCU returns 4 bytes of data only in the case it reiceves
 a valid reading command with exact memory address.
 
 So with this one we can dump bootloader code (16 kb size) in about 5 min!
-
-Maybe you can use this to dump more than 16 kb... Official datasheet states
-that BK3266 has 8M=1Mbyte=0x100000 offsets of memory so you can try that.
-Don't know for sure is there any other and more complex flash protection
-functions, but full dump of this size is already taking forever :)
+Always do a few dumps and compare them!
